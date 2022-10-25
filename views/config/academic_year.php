@@ -3,6 +3,7 @@ function submit(x) {
     if (x == 'add') {
         $('[name="idtahun_akademik"]').val("");
         $('[name="tahun_akademik"]').val("");
+        $('[name="tempat"]').val("");
         $('[name="semester"]').val("").trigger('change');
         $('[name="semester_aktif"]').val("").trigger('change');
         $('#modal-add .modal-title').html('Tambah Tahun Pelajaran');
@@ -16,6 +17,7 @@ function submit(x) {
         $('#btn-tambah').hide();
         $('#btn-ubah').show();
         $('[name="tahun_akademik"]').prop('readonly', true);
+        $('[name="tempat"]').prop('readonly', true);
         // $('[name="semester"]').prop('disabled', true);
 
         $.ajax({
@@ -28,6 +30,7 @@ function submit(x) {
             success: function(data) {
                 $('[name="idtahun_akademik"]').val(data.idtahun_akademik);
                 $('[name="tahun_akademik"]').val(data.tahun_akademik);
+                $('[name="tempat"]').val(data.tempat);
                 $('[name="semester"]').val(data.semester).trigger('change');
                 $('[name="semester_aktif"]').val(data.semester_aktif).trigger('change');
             }
@@ -39,7 +42,7 @@ function saveNew() {
     var tahun_akademik = $('[name="tahun_akademik"]').val();
     var semester = $('[name="semester"]').val();
     var semester_aktif = $('[name="semester_aktif"]').val();
-    var semester_aktif = $('[name="semester_aktif"]').val();
+    var tempat = $('[name="tempat"]').val();
     $.ajax({
         type: "POST",
         data: {
@@ -105,8 +108,7 @@ function saveNew() {
                         <td><a href="#modal-add" data-toggle="modal" onclick="submit(<?=$row->idtahun_akademik;?>)"><i class="fa fa-edit"></i></a></td>
                         <td><?=$row->tahun_akademik;?></td>
                         <td><?=$row->semester;?></td>
-                        <td><?=$row->semester_aktif==0?'<i class="fa fa-close"></i>':'<i class="fa fa-check"></i>';?>
-                        </td>
+                        <td><?=$row->semester_aktif==0?'<i class="fa fa-close"></i>':'<i class="fa fa-check"></i>';?></td>
                     </tr>
                     <?php endforeach;?>
                 </tbody>
@@ -119,7 +121,7 @@ function saveNew() {
 <div class="modal fade" id="modal-add" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="" method="post">
+            <form action="<?=base_url();?>configuration/save" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
@@ -158,7 +160,6 @@ function saveNew() {
                     <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tempat">Tempat<span class="text-red">*</span></label>
-                                <input type="hidden" name="tempat">
                                 <input type="text" class="form-control" id="tempat" name="tempat" placeholder="Ex: Bandung">
                             </div>
                         </div>

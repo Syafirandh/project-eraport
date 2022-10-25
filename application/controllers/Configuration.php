@@ -80,6 +80,7 @@ class Configuration extends CI_Controller {
         return [
             'tahun_akademik' => $this->input->post('tahun_akademik', true),
             'semester' => $this->input->post('semester', true),
+            'tempat' => $this->input->post('tempat', true),
             'semester_aktif' => $this->input->post('semester_aktif', true)
         ];
     }
@@ -92,6 +93,7 @@ class Configuration extends CI_Controller {
         $val = $this->form_validation;
         $val->set_rules('tahun_akademik', 'Tahun Akademik', 'trim|required|min_length[9]|max_length[9]|callback_format_check');
         $val->set_rules('semester', 'Semester', 'trim|required');
+        $val->set_rules('tempat', 'Tempat', 'trim|required');
         $val->set_rules('semester_aktif', 'Semester Aktif', 'trim|required|in_list[1,0]');
         // $val->set_error_delimiters('<div>&sdot; ', '</div>');
         return $val->run();
