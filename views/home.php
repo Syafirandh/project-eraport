@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>E-rapot | Sistem Penilaian Siswa Smk Bumi Siliwangi</title>
-    <link rel="icon" href="<?= base_url('uploads/logo_SMK.jpg')?>" type="image/x-icon">
+    <title>E-Academic | Sistem Penilaian Siswa </title>
+    <link rel="icon" href="<?= base_url('uploads/') . _school_profile()->logo; ?>" type="image/x-icon">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- CSS CDN  -->
@@ -80,7 +80,7 @@
             <a href="<?= _school_profile()->website; ?>" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>E</b>-Rapot</span>
+                <span class="logo-lg"><b>E</b>-Academic</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -128,7 +128,7 @@
                         <i class="fa fa-times"></i></button>
                 </div>
                 <h3>
-                    Selamat Datang di E-Rapot <b><?= _school_profile()->nama; ?></b>
+                    Selamat Datang di E-Academic <b><?= _school_profile()->nama; ?></b>
                 </h3>
             </div>
         </div>
@@ -208,7 +208,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="card">
-                                    <img src="<?= base_url('uploads/logo_SMK.jpg') . _school_profile()->logo; ?>" class="card-img-top" weight="140" height="128" alt="...">
+                                    <img src="<?= base_url('uploads/') . _school_profile()->logo; ?>" class="card-img-top" weight="140" height="128" alt="...">
                                     <div class="card-body">
                                         <h4 class="card-title"><b><?= _school_profile()->konten; ?></b></h5>
                                             <p class="card-text"><?= _school_profile()->isi_konten; ?></p>

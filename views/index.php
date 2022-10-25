@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>E-Academic | <?=_school_profile()->nama;?> </title>
-    <link rel="icon" href="<?=base_url('uploads/siswa-5.jpg')?>" type="image/x-icon">
+    <link rel="icon" href="<?=base_url('uploads/')._school_profile()->logo;?>" type="image/x-icon">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- CSS CDN  -->
@@ -84,7 +84,7 @@
 
         <header class="main-header">
             <!-- Logo -->
-            <a href="<?= _school_profile()->website; ?>" class="logo">
+            <a href="#" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini" img><img class="logo" src="<?=base_url('uploads/')._school_profile()->logo;?>" alt="" weight="40" height="28"></span>
                 <!-- logo for regular state and mobile devices -->
@@ -144,7 +144,7 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
-                    <?php if(__session('access')=='super_user' || __session('access')=='guru' || __session('access')=='siswa'):?>
+                    <?php if(__session('access')=='super_user' ):?>
                     <li <?=isset($dashboard)?'class="active"':'';?>>
                         <a href="<?=base_url('dashboard');?>">
                             <i class="fa fa-home"></i> <span>Beranda</span>
@@ -169,10 +169,10 @@
                                     href="<?=base_url('configuration/academic_year');?>"><i
                                         class="fa fa-angle-double-right"></i> Tahun Pelajaran</a>
                             </li>
-                            <!-- <li <?=isset($date_print)?'class="active"':'';?>><a
+                            <li <?=isset($date_print)?'class="active"':'';?>><a
                                     href="<?=base_url('configuration/date_print');?>"><i
                                         class="fa fa-angle-double-right"></i> Tanggal Cetak</a>
-                            </li> -->
+                            </li>
                             
                         </ul>
                     </li>
@@ -219,7 +219,9 @@
                             <li <?=isset($wali_kelas)?'class="active"':'';?>><a
                                     href="<?=base_url('setting/wali_kelas');?>"><i class="fa fa-angle-double-right"></i>
                                     Wali Kelas</a></li>
-                            
+                            <li <?=isset($sett_kelas)?'class="active"':'';?>><a
+                                    href="<?=base_url('setting/set_kelas');?>"><i class="fa fa-angle-double-right"></i>
+                                    Rombongan Belajar</a></li>
                         </ul>
                     </li>
                     <?php endif;?>

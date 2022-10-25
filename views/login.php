@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>E-Academic | Login </title>
-    <link rel="icon" href="<?=base_url('uploads/siswa-5.jpg')?>" type="image/x-icon" />
+    <link rel="icon" href="<?=base_url('uploads/')._school_profile()->logo;?>" type="image/x-icon" />
     <!-- Favicons -->
     <link href="" rel="icon">
     <!-- Tell the browser to be responsive to screen width -->
@@ -41,12 +41,11 @@
             <br><br>
             <?=$this->session->flashdata('msg');?>
             <div class="login-logo">
-            <img class="logo" src="<?=base_url('uploads/Logo_SMK.jpg')?>" alt="" weight="120" height="100">
+            <img class="logo" src="<?=base_url('uploads/')._school_profile()->logo;?>" alt="" weight="120" height="100">
             </div>
 
-            <b style="text-align:center"><b><h3>E-RAPOT</h3></b></b>
-            <b style="text-align:center"><b><h3>SMK BUMI SILIWANGI BANDUNG</h3></b></b>
-            
+            <b style="text-align:center"><b><h3>Sistem Penilaian Siswa</h3></b></b>
+            <b style="text-align:center"> <h5><?=_school_profile()->nama;?></h5></b>
             <br>
 
             <form action="" method="post">

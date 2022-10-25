@@ -62,7 +62,9 @@ function hapus(x) {
 <!-- Main content -->
 <section class="content">
     <div class="box box-primary">
-        <div class="box-header with-border">
+    <div class="box-header with-border">
+            <a href="#modal-add" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" onclick="add()"><i
+                    class="fa fa-plus"></i> Tambah</a>
             <a href="<?=base_url('master/pengguna');?>" class="btn btn-sm btn-primary btn-flat pull-right"
                 data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fa fa-refresh"></i></a>
         </div>
@@ -127,7 +129,7 @@ function hapus(x) {
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="user_name">Nama<span class="text-red">*</span></label>
+                                <label for="user_name">Username<span class="text-red">*</span></label>
                                 <input type="hidden" name="idusers">
                                 <input type="text" class="form-control" id="user_name" name="user_name"
                                     placeholder="Ex: admin" required>
@@ -154,9 +156,6 @@ function hapus(x) {
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-flat btn-sm pull-left" data-dismiss="modal"><i
                             class="fa fa-remove"></i> Batal</button>
-                    <button type="submit" class="btn btn-success btn-flat btn-sm" id="btn-tambah"><i
-                            class="fa fa-save"></i>
-                        Simpan</button>
                     <button type="submit" class="btn btn-success btn-flat btn-sm" id="btn-ubah"><i
                             class="fa fa-save"></i>
                         Simpan Perubahan</button>

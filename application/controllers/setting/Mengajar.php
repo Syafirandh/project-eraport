@@ -28,13 +28,11 @@ class Mengajar extends CI_Controller {
         $data = [
             'idtahun_akademik' => _active_years()->idtahun_akademik,
             'semester' => _active_years()->semester,
-            'idguru' => $this->input->post('idguru', true),
+            // 'idguru' => $this->input->post('idguru', true),
             'idkelas' => $this->input->post('idkelas', true),
-            'idmapel' => $this->input->post('idmapel', true),
-            // 'idmapel' => $this->input->post(array('idmapel','idmapel1','idmapel2','idmapel3'),true),
+            'idmapel' => $this->input->post('idmapel', true)
         ];
         $cek = $this->mengajar_m->check($data)->num_rows();
-        // return var_dump($cek);
         if($cek==0){
             $data['idguru'] = $this->input->post('idguru', true);
             $this->vars['status'] = $this->db->insert($this->table, $data) ? 'success' : 'error';

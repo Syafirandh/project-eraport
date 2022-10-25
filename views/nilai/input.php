@@ -256,16 +256,16 @@ function minmax(value, min, max) {
                             <th rowspan="2" class="text-center" width="95" style="line-height:55px;">PRAKTEK 2</th>
                             <th rowspan="2" class="text-center" width="95" style="line-height:55px;">NA</th>
                             <th rowspan="2" class="text-center" width="85" style="line-height:55px;">GRADE</th>
-                            <th rowspan="2" class="text-center" width="150" style="line-height:55px;">DESKRIPSI 1</th>
-                            <th rowspan="2" class="text-center" width="150" style="line-height:55px;">DESKRIPSI 2</th>
+                            <th rowspan="2" class="text-center" width="150" style="line-height:55px;">DESKRIPSI</th>
+                            <th rowspan="2" class="text-center" width="550" style="line-height:55px;">CATATAN KETERAMPILAN</th>
                             <th colspan="7" class="text-center" width="550">NILAI PENGETAHUAN</th>
                             <th rowspan="2" class="text-center" width="95" style="line-height:55px;">RNU</th>
                             <th rowspan="2" class="text-center" width="95" style="line-height:55px;">PTS</th>
                             <th rowspan="2" class="text-center" width="95" style="line-height:55px;">UAS</th>
                             <th rowspan="2" class="text-center" width="95" style="line-height:55px;">NA</th>
                             <th rowspan="2" class="text-center" width="85" style="line-height:55px;">GRADE</th>
-                            <th rowspan="2" class="text-center" width="150" style="line-height:55px;">DESKRIPSI 1</th>
-                            <th rowspan="2" class="text-center" width="150" style="line-height:55px;">DESKRIPSI 2</th>
+                            <th rowspan="2" class="text-center" width="150" style="line-height:55px;">DESKRIPSI</th>
+                            <th rowspan="2" class="text-center" width="550" style="line-height:55px;">CATATAN PENGETAHUAN</th>
                         </tr>
                         <tr>
                             <th class="text-center">1</th>
