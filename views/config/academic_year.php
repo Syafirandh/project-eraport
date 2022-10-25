@@ -35,35 +35,31 @@ function submit(x) {
     }
 }
 
-function saveNew() {
-    var tahun_akademik = $('[name="tahun_akademik"]').val();
-    var semester = $('[name="semester"]').val();
-    var semester_aktif = $('[name="semester_aktif"]').val();
-    var semester_aktif = $('[name="semester_aktif"]').val();
-    $.ajax({
-        type: "POST",
-        data: {
-            tahun_akademik: tahun_akademik,
-            semester: semester,
-            semester_aktif: semester_aktif,
-            tempat: tempat
-        },
-        url: '<?=base_url();?>configuration/save',
-        success: function(data) {
-            $('#modal-add').modal('hide');
-            if (data) {
-                toastr.error(data);
-            }
-            setTimeout(() => {
-                window.location =
-                    "<?=site_url();?>configuration/academic_year";
-            }, 1500);
-        }
-    });
-}
-
+// function saveNew() {
+//     var tahun_akademik = $('[name="tahun_akademik"]').val();
+//     var semester = $('[name="semester"]').val();
+//     var semester_aktif = $('[name="semester_aktif"]').val();
+//     $.ajax({
+//         type: "POST",
+//         data: {
+//             tahun_akademik: tahun_akademik,
+//             semester: semester,
+//             semester_aktif: semester_aktif
+//         },
+//         url: '<?=base_url();?>configuration/save',
+//         success: function(data) {
+//             $('#modal-add').modal('hide');
+//             if (data) {
+//                 toastr.error(data);
+//             }
+//             setTimeout(() => {
+//                 window.location =
+//                     "<?=site_url();?>configuration/academic_year";
+//             }, 1500);
+//         }
+//     });
+// }
 </script>
-
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
@@ -102,7 +98,9 @@ function saveNew() {
                     foreach ($academic_year as $row) :?>
                     <tr>
                         <td><?=$n++.'.';?></td>
-                        <td><a href="#modal-add" data-toggle="modal" onclick="submit(<?=$row->idtahun_akademik;?>)"><i class="fa fa-edit"></i></a></td>
+                        <td><a href="#modal-add" data-toggle="modal" onclick="submit(<?=$row->idtahun_akademik;?>)"><i
+                                    class="fa fa-edit"></i></a>
+                        </td>
                         <td><?=$row->tahun_akademik;?></td>
                         <td><?=$row->semester;?></td>
                         <td><?=$row->semester_aktif==0?'<i class="fa fa-close"></i>':'<i class="fa fa-check"></i>';?>
@@ -114,12 +112,10 @@ function saveNew() {
         </div>
     </div>
 </section>
-
-<!-- Modal Create Data -->
 <div class="modal fade" id="modal-add" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="" method="post">
+            <form action="<?=base_url('configuration/save');?>" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
@@ -151,15 +147,6 @@ function saveNew() {
                                     <option value="1">Ya</option>
                                     <option value="0">Tidak</option>
                                 </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="tempat">Tempat<span class="text-red">*</span></label>
-                                <input type="hidden" name="tempat">
-                                <input type="text" class="form-control" id="tempat" name="tempat" placeholder="Ex: Bandung">
                             </div>
                         </div>
                     </div>

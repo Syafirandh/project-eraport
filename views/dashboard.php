@@ -50,36 +50,7 @@
                 <div class="inner">
                     <h3><?= count(list_siswa()); ?></h3>
 
-
-                    <p>Siswa Aktif</p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-users"></i>
-                </div>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-green">
-                <div class="inner">
-                    <h3><?= count(list_kelas()); ?></h3>
-
-                    <p>kepala sekolah</p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-users"></i>
-                </div>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-green">
-                <div class="inner">
-                    <h3><?= count(list_kelas()); ?></h3>
-
-                    <p>Wali Kelas</p>
+                    <p>Siswa</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-users"></i>
@@ -115,7 +86,6 @@
         </div>
         <!-- ./col -->
     </div>
-    
 
     <div class="box box-primary">
         <div class="box-header with-border">
@@ -130,7 +100,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <div class="card">
-                                <img src="<?= base_url('uploads/logo_SMK.jpg') ?>" class="card-img-top" weight="140" height="128" alt="...">
+                                <img src="<?= base_url('uploads/') . _school_profile()->logo; ?>" class="card-img-top" weight="140" height="128" alt="...">
                                 <div class="card-body">
                                     <h4 class="card-title"><b><?= _school_profile()->konten; ?></b></h5>
                                         <p class="card-text"><?= _school_profile()->isi_konten; ?></p>

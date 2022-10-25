@@ -22,8 +22,8 @@ error_reporting(0);
             <img src="../uploads/kemendikbud.png" style="width:210px;height:210px;float:center;margin-bottom:30px;">
         </center>
         <h2 class="text-center"><b>RAPOR</b></h2>
-        <h2 class="text-center"><b>SEKOLAH MENENGAH KEJURUAN</b></h2>
-        <h2 class="text-center"><b>( SMK )</b></h2>
+        <h2 class="text-center"><b>SEKOLAH MENENGAH ATAS</b></h2>
+        <h2 class="text-center"><b>( SMA )</b></h2>
         <br><br><br><br><br><br><br>
         <h3 class="text-center"><b>Nama Peserta Didik</b></h3>
         <table class="table table-bordered table-striped" style="font-size:12pt;">
@@ -45,8 +45,8 @@ error_reporting(0);
     <div style="page-break-after:always;">
         <br>
         <h4 class="text-center"><b>RAPOR</b></h4>
-        <h4 class="text-center"><b>SEKOLAH MENENGAH KEJURUAN</b></h4>
-        <h4 class="text-center"><b>( SMK )</b></h4>
+        <h4 class="text-center"><b>SEKOLAH MENENGAH ATAS</b></h4>
+        <h4 class="text-center"><b>( SMA )</b></h4>
         <br><br>
         <table style="padding:15px; font-size:12pt;">
             <tr>
@@ -331,8 +331,8 @@ error_reporting(0);
                     <th style="text-align:center;">No</th>
                     <th rowspan="2" style="text-align:center;">Mata Pelajaran</th>
                     <th rowspan="1" style="text-align:center;">Nilai</th>
-                    <th rowspan="1" style="text-align:center;">Deskripsi 1</th>
-                    <th rowspan="4" style="text-align:center;">Deskripsi 2</th>
+                    <th rowspan="1" style="text-align:center;">Predikat</th>
+                    <th rowspan="4" style="text-align:center;">Catatan</th>
                 </tr>
             </thead>
             <tbody>
@@ -437,8 +437,8 @@ error_reporting(0);
                     <th style="text-align:center;">No</th>
                     <th rowspan="2" style="text-align:center;">Mata Pelajaran</th>
                     <th rowspan="1" style="text-align:center;">Nilai</th>
-                    <th rowspan="1" style="text-align:center;">Deskripsi 1</th>
-                    <th rowspan="4" style="text-align:center;">Deskripsi 2</th>
+                    <th rowspan="1" style="text-align:center;">Predikat</th>
+                    <th rowspan="4" style="text-align:center;">Catatan</th>
                 </tr>
             </thead>
             <tbody>
