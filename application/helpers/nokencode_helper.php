@@ -279,3 +279,18 @@ if ( ! function_exists('_toInteger')) {
 		return $n;
 	}
 }
+
+if ( ! function_exists('dd')) {
+	function dd( $n ) {
+		return print_r(json_encode($n));
+	}
+}
+
+if ( ! function_exists('getTahunPelajaran')) {
+	function getTahunPelajaran( $tahun ) {
+		$CI =& get_instance();
+		return $CI->db->select('tahun_akademik')
+		->where('idtahun_akademik',$tahun)
+		->get('tahun_akademik')->row();
+	}
+}

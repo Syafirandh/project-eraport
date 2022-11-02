@@ -4,6 +4,7 @@ function submit(x) {
         $('[name="idmapel"]').val("");
         $('[name="mapel_kd"]').val("");
         $('[name="mapel_nama"]').val("");
+        $('[name="tahun_akademik"]').val("");
         $('#modal-add .modal-title').html('Tambah Mata Pelajaran');
         $('#btn-tambah').show();
         $('#btn-ubah').hide();
@@ -25,6 +26,7 @@ function submit(x) {
                 $('[name="idmapel"]').val(data.idmapel);
                 $('[name="mapel_kd"]').val(data.mapel_kd);
                 $('[name="mapel_nama"]').val(data.mapel_nama);
+                $('[name="tahun_akademik"]').val(data.tahun_akademik);
             }
         });
     }
@@ -38,6 +40,7 @@ function hapus(x) {
     })
 }
 </script>
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
@@ -54,44 +57,48 @@ function hapus(x) {
 <section class="content">
     <div class="box box-primary">
         <div class="box-header with-border">
-            <a href="#modal-add" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" onclick="submit('add')"><i
-                    class="fa fa-plus"></i> Tambah</a>
-            <a href="<?=base_url('master/mapel');?>" class="btn btn-sm btn-primary btn-flat pull-right"
-                data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fa fa-refresh"></i></a>
+            <a href="#modal-add" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" onclick="submit('add')"><i class="fa fa-plus"></i> Tambah</a>
+            <a href="<?=base_url('master/mapel');?>" class="btn btn-sm btn-primary btn-flat pull-right" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fa fa-refresh"></i></a>
         </div>
         <div class="box-body table-responsive">
             <table class="table table-bordered table-striped table-hover datatable">
                 <thead>
                     <tr>
-                        <th width="5">NO</th>
-                        <th width="5"><i class="fa fa-edit"></i></th>
-                        <th>KODE</th>
-                        <th>MATA PELAJARAN</th>
-                        <th width="5">#</th>
+                        <th width="1%">NO</th>
+                        <th width="1%"><i class="fa fa-edit"></i></th>
+                        <th width="5%">KODE</th>
+                        <th width="15%">MATA PELAJARAN</th>
+                        <th width="3%">Tahun Pelajaran</th>
+                        <th width="1%">#</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php 
                     $n=1;
                     foreach ($mapel as $row) :?>
-                    <tr>
-                        <td><?=$n++.'.';?></td>
-                        <td><a href="#modal-add" data-toggle="modal" onclick="submit(<?=$row->idmapel;?>)"><i
-                                    class="fa fa-edit"></i></a>
-                        </td>
-                        <td><?=$row->mapel_kd;?></td>
-                        <td><?=$row->mapel_nama;?></td>
-                        <td><a href="#" class="btn btn-xs btn-default text-red" data-toggle="tooltip"
-                                data-placement="top" data-title="Hapus" onclick="hapus(<?=$row->idmapel;?>)"><i
-                                    class="fa fa-trash"></i></a>
-                        </td>
-                    </tr>
+                        <?php #if($row->tahun_akademik != 0) :?>
+                            <tr>
+                                <td><?=$n++.'.';?></td>
+                                <td><a href="#modal-add" data-toggle="modal" onclick="submit(<?=$row->idmapel;?>)"><i
+                                            class="fa fa-edit"></i></a>
+                                </td>
+                                <td><?= $row->mapel_kd; ?></td>
+                                <td><?= $row->mapel_nama; ?></td>
+                                <td><?= getTahunPelajaran($row->tahun_akademik)->tahun_akademik; ?></td>
+                                <td><a href="#" class="btn btn-xs btn-default text-red" data-toggle="tooltip"
+                                        data-placement="top" data-title="Hapus" onclick="hapus(<?=$row->idmapel;?>)"><i
+                                            class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        <?php #endif;?>
                     <?php endforeach;?>
                 </tbody>
             </table>
         </div>
     </div>
 </section>
+
+<!-- Modal Tambah Data -->
 <div class="modal fade" id="modal-add" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -118,6 +125,17 @@ function hapus(x) {
                                     placeholder="Ex: Matematika" required>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tahun_akademik">Tahun Pelajaran<span class="text-red">*</span></label>
+                                <select class="form-control select2" style="width: 100%;" id="tahun_akademik" name="tahun_akademik">
+                                    <option value="" selected disabled>-- Pilih Tahun --</option>
+                                    <?php foreach($tahunAkademik as $tahun) :?>
+                                        <option value="<?= $tahun->idtahun_akademik ?>"><?= $tahun->tahun_akademik ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -134,6 +152,7 @@ function hapus(x) {
         </div>
     </div>
 </div>
+
 <!-- Modal konfirmasi delete -->
 <div class="modal fade" id="modal-delete" role="dialog" data-backdrop="static">
     <div class="modal-dialog">
