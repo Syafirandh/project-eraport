@@ -131,13 +131,15 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
                 <!-- Sidebar user panel -->
-                <div class="user-panel" href="#" data-toggle="modal"
-                                onclick="change_pass('<?=uri_string();?>','<?=__session('id');?>')">
+                <div class="user-panel" href="#" data-toggle="modal" style="padding-bottom: 37px" onclick="change_pass('<?=uri_string();?>','<?=__session('id');?>')">
                     <div class="pull-left image">
                         <img src="<?=base_url('assets/');?>dist/img/avatar5.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p><?=user(__session('id'))->user_fullname;?></p>
+                        <p style="font-size: 20px"><?=user(__session('id'))->user_fullname;?></p>
+                        <?php #if(__session('access')=='guru' ):?>
+                            <!-- <p style="font-size: 13px">Wali Kelas : <?= (wali_kelas(15)->kelas_nama);?></p> -->
+                        <?php #endif;?>
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
@@ -243,7 +245,7 @@
                             </li>
                         </ul>
                     </li>
-                    <?php endif;?>
+                    <?php endif;?>                  
                     <?php if(__session('access')=='super_user' || __session('access')=='guru'):?>
                     <li <?=isset($student)?'class="active"':'';?>>
                         <a href="<?=base_url('siswa');?>">
@@ -258,7 +260,7 @@
                     <?php endif;?>
                     
                     
-                    <?php if(__session('access')=='super_user'):?>
+                    <?php if(__session('access')=='super_user' || __session('access')=='guru'):?>
                     <li <?=isset($report)?'class="active"':'';?>>
                         <a href="<?=base_url('raport');?>">
                             <i class="fa fa-print"></i> <span>Cetak Raport</span>

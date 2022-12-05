@@ -93,7 +93,7 @@
                                 <!-- <span class="hidden-xs"></span> -->
                             </a>
                         </li>
-                        <li class="dropdown user user-menu">
+                        <li class="dropdown user u ser-menu">
                             <a href="<?= base_url('#'); ?>">
                                 <i class="fa fa-info"></i>About
                                 <!-- <span class="hidden-xs"></span> -->

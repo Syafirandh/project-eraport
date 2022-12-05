@@ -42,7 +42,7 @@ function printContent(el) {
                             <label>Semester<span class="text-red">*</span></label>
                             <select class="form-control select2" style="width: 100%;" name="semester" required>
                                 <option value="Ganjil">Ganjil</option>
-                                <option value="Genap">Genap)</option>
+                                <option value="Genap">Genap</option>
                             </select>
                         </div>
                     </div>

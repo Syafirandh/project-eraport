@@ -244,6 +244,27 @@ if (!function_exists('user')){
 	}
 }
 /**
+* User
+* @param String
+* @return Array
+*/
+if (!function_exists('wali_kelas')){
+	function wali_kelas($id){
+		$CI =& get_instance();
+
+		// $user = $CI->db->get_where('users',['idusers'=>$id])->row();
+
+		// $guru = $CI->db->like('nama',$user->user_fullname)
+		// ->get('guru')->result();
+
+		// $walikelas = $guru->idguru;
+
+		return $CI->db->join('kelas k', 'k.idkelas = n.idkelas', 'left')
+		->where(['n.idguru'=>$id])
+		->get('wali_kelas n')->row();
+	}
+}
+/**
 * Session login 
 * @param String
 * @return Boolean
@@ -277,5 +298,11 @@ if ( ! function_exists('_toInteger')) {
 	function _toInteger( $n ) {
 		$n = abs(intval(strval($n)));
 		return $n;
+	}
+}
+
+if ( ! function_exists('dd')) {
+	function dd( $n ) {
+		return print_r(json_encode($n));
 	}
 }

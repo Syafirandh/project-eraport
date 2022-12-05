@@ -145,9 +145,12 @@ function hapus(x) {
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>Level<span class="text-red">*</span></label>
-                                <input type="text" class="form-control" id="user_type" name="user_type"
-                                    placeholder="Ex: siswa" required>
-            
+                                <!-- <input type="text" class="form-control" id="user_type" name="user_type" placeholder="Ex: siswa" required> -->
+                                <select class="form-control select2" style="width: 100%;" name="user_type" id="user_type">
+                                    <option value="" selected disabled>pilih level</option>
+                                    <option value="guru">Guru</option>
+                                    <option value="siswa">Siswa</option>
+                                    <option value="orang_tua">Orang tua</option>
                                 </select>
                             </div>
                         </div>
