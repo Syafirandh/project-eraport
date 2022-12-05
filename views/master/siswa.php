@@ -8,6 +8,7 @@
             $('[name="tmp_lhr"]').val("");
             $('[name="tgl_lhr"]').val("");
             $('[name="jk"]').val("").trigger('change');
+            $('[name="tahun_akademik"]').val(data.tahun_akademik).trigger('change');
             $('[name="alamat"]').val("");
             $('[name="nik"]').val("");
             $('[name="hobi"]').val("");
@@ -48,6 +49,7 @@
                     $('[name="tmp_lhr"]').val(data.tmp_lhr);
                     $('[name="tgl_lhr"]').val(data.tgl_lhr);
                     $('[name="jk"]').val(data.jk).trigger('change');
+                    $('[name="tahun_akademik"]').val(data.tahun_akademik).trigger('change');
                     $('[name="alamat"]').val(data.alamat);
                     $('[name="nik"]').val(data.nik);
                     $('[name="hobi"]').val(data.hobi);
@@ -87,6 +89,7 @@
                 $('[name="tmp_lhr"]').val(data.tmp_lhr);
                 $('[name="tgl_lhr"]').val(data.tgl_lhr);
                 $('[name="jk"]').val(data.jk).trigger('change');
+                $('[name="tahun_akademik"]').val(data.tahun_akademik).trigger('change');
                 $('[name="alamat"]').val(data.alamat);
                 $('[name="nik"]').val(data.nik);
                 $('[name="hobi"]').val(data.hobi);
@@ -169,6 +172,7 @@
         })
     }
 </script>
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
@@ -203,6 +207,7 @@
                         <th>TTL</th>
                         <th>JK</th>
                         <th>ALAMAT</th>
+                        <th>TAHUN AKADEMIK</th>
                         <th>STATUS</th>
                         <th width="65">AKSI</th>
                     </tr>
@@ -224,6 +229,7 @@
                             <td><?= $row->tmp_lhr . ', ' . date('d M Y', strtotime($row->tgl_lhr)); ?></td>
                             <td><?= $row->jk == 'L' ? 'Laki-Laki' : 'Perempuan'; ?></td>
                             <td><?= $row->alamat; ?></td>
+                            <td><?= getTahunPelajaran($row->tahun_akademik)->tahun_akademik; ?></td>
                             <td><a href="#" class="label <?php if ($row->status == 'Aktif') {
                                                                 echo 'bg-green';
                                                             } elseif ($row->status == 'Nonaktif') {
@@ -250,6 +256,7 @@
         </div>
     </div>
 </section>
+
 <div class="modal fade" id="modal-add" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -276,25 +283,25 @@
                                         <div class="form-group">
                                             <label for="nis">NIS<span class="text-red">*</span></label>
                                             <input type="hidden" name="idsiswa">
-                                            <input type="text" class="form-control" id="nis" name="nis" placeholder="Ex: 2020" required>
+                                            <input type="text" class="form-control" id="nis" name="nis" placeholder="1923" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="nisn">NISN<span class="text-red">*</span></label>
-                                            <input type="text" class="form-control" id="nisn" name="nisn" placeholder="Ex: 0012389567" maxlength="10" required>
+                                            <input type="text" class="form-control" id="nisn" name="nisn" placeholder="Ex: 0938776628" maxlength="10" required>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                             <label for="nama_lengkap">Nama Lengkap<span class="text-red">*</span></label>
-                                            <input type="text" class="form-control" id="nama_lengkap" name="nama" placeholder="Ex: John Andy" required>
+                                            <input type="text" class="form-control" id="nama_lengkap" name="nama" placeholder="Febby Saka Wuni" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="tempat_lahir">Tempat Lahir<span class="text-red">*</span></label>
-                                            <input type="text" class="form-control" id="tempat_lahir" name="tmp_lhr" placeholder="Ex: Manokwari" required>
+                                            <input type="text" class="form-control" id="tempat_lahir" name="tmp_lhr" placeholder="Bandung" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -317,39 +324,61 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label>Alamat Lengkap<span class="text-red">*</span></label>
                                             <textarea class="form-control" name="alamat" rows="5" required></textarea>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="tahun_akademik">Tahun Pelajaran<span class="text-red">*</span></label>
+                                            <select class="form-control select2" style="width: 100%;" id="tahun_akademik" name="tahun_akademik" required>
+                                                <option value="" selected disabled>-- Pilih Tahun --</option>
+                                                <?php foreach($tahunAkademik as $tahun) :?>
+                                                    <option value="<?= $tahun->idtahun_akademik ?>"><?= $tahun->tahun_akademik ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>                                    
                                 </div>
                             </div>
+
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="nik">NIK</label>
-                                            <input type="text" class="form-control" id="nik" name="nik" placeholder="Ex: 9206111027990001">
+                                            <input type="text" class="form-control" id="nik" name="nik" placeholder="9828727626562">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="agama">Agama</label>
-                                            <input type="text" class="form-control" id="agama" name="agama" placeholder="Ex: Islam">
+                                            <!-- <input type="text" class="form-control" id="agama" name="agama" placeholder="Ex: Islam"> -->
+                                            <select class="form-control select2" style="width: 100%;" name="agama" id="agama">
+                                                <option value="" selected disabled>pilih agama</option>
+                                                <option value="Islam">Islam</option>
+                                                <option value="Khatholik">Khatholik</option>
+                                                <option value="Kristen">Kristen</option>
+                                                <option value="Hindu">Hindu</option>
+                                                <option value="Budha">Budha</option>
+                                                <option value="Kong Hu Cu">Kong Hu Cu</option>
+                                                <option value="Lainnya">Lainnya</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="hobi">Hobi</label>
-                                            <input type="text" class="form-control" id="hobi" name="hobi" placeholder="Ex: Bulu tangkis">
+                                            <input type="text" class="form-control" id="hobi" name="hobi" placeholder="Menyanyi">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="citacita">Cita-Cita</label>
-                                            <input type="text" class="form-control" id="citacita" name="citacita" placeholder="Ex: Polisi">
+                                            <input type="text" class="form-control" id="citacita" name="citacita" placeholder="Musisi">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -365,42 +394,43 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="jml_sdr">Jumlah Saudara</label>
-                                            <input type="text" class="form-control" id="jml_sdr" name="jml_sdr" placeholder="Ex: 4">
+                                            <input type="text" class="form-control" id="jml_sdr" name="jml_sdr" placeholder="3">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="anak_ke">Anak Ke Berapa</label>
-                                            <input type="text" class="form-control" id="anak_ke" name="anak_ke" placeholder="Ex: 2">
+                                            <input type="text" class="form-control" id="anak_ke" name="anak_ke" placeholder=" 1">
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nik_ayah">NIK Ayah</label>
-                                            <input type="text" class="form-control" id="nik_ayah" name="nik_ayah" placeholder="Ex: 9206111027990001">
+                                            <input type="text" class="form-control" id="nik_ayah" name="nik_ayah" placeholder="Isi NIK ayah">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nik_ibu">NIK Ibu</label>
-                                            <input type="text" class="form-control" id="nik_ibu" name="nik_ibu" placeholder="Ex: 9206111027990001">
+                                            <input type="text" class="form-control" id="nik_ibu" name="nik_ibu" placeholder="Isi NIK Ibu">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nama_ayah">Nama Ayah</label>
-                                            <input type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Ex: Father Eko">
+                                            <input type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Bapak Abdullah">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nama_ibu">Nama Ibu</label>
-                                            <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Ex: Mother Eko">
+                                            <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Ibu Aisyah ">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -442,13 +472,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="pekr_ayah">Pekerjaan Ayah</label>
-                                            <input type="text" class="form-control" id="pekr_ayah" name="pekr_ayah" placeholder="Ex: Polisi">
+                                            <input type="text" class="form-control" id="pekr_ayah" name="pekr_ayah" placeholder="Petani">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="pekr_ibu">Pekerjaan Ibu</label>
-                                            <input type="text" class="form-control" id="pekr_ibu" name="pekr_ibu" placeholder="Ex: PNS">
+                                            <input type="text" class="form-control" id="pekr_ibu" name="pekr_ibu" placeholder="Ibu Rumah Tangga">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -460,13 +490,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nama_wali">Nama Wali</label>
-                                            <input type="text" class="form-control" id="nama_wali" name="nama_wali" placeholder="Ex: Jaki">
+                                            <input type="text" class="form-control" id="nama_wali" name="nama_wali" placeholder="Bapak Rahul">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">s
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="pekr_wali">Pekerjaan Wali</label>
-                                            <input type="text" class="form-control" id="pkr_wali" name="pkr_wali" placeholder="Ex: PNS">
+                                            <input type="text" class="form-control" id="pkr_wali" name="pkr_wali" placeholder="Wartawan">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -491,6 +521,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="modal-import" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -527,6 +558,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="modal-status" role="dialog" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -562,6 +594,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="modal-view" role="dialog" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -797,6 +830,7 @@
         </div>
     </div>
 </div>
+
 <!-- Modal Ubah Gambar -->
 <div class="modal fade" id="modal-image" role="dialog" data-backdrop="static">
     <div class="modal-dialog">
@@ -826,6 +860,7 @@
         </form>
     </div>
 </div>
+
 <!-- Modal konfirmasi delete -->
 <div class="modal fade" id="modal-delete" role="dialog" data-backdrop="static">
     <div class="modal-dialog">

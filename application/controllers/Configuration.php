@@ -21,7 +21,6 @@ class Configuration extends CI_Controller {
         $data['content'] = 'config/academic_year';
         $this->load->view('index',$data);
     }
-    
     public function date_print()
     {
         $data['configuration'] = $data['date_print'] = true;
@@ -48,6 +47,7 @@ class Configuration extends CI_Controller {
         if ($this->validation()) {
             $dataset = $this->dataset();
             if (_isNaturalNumber( $id )) {
+                $dataset['tanggal'] = date('Y-m-d');
                 $this->vars['status'] = $this->db->update($this->table, $dataset,[$this->pk=>$id]) ? 'success' : 'error';
                 $this->vars['status'] == 'success' ? $this->toastr->success('Perubahan berhasil') : $this->toastr->error('Perubahan gagal');
                 if ($this->vars['status'] == 'success' && filter_var((string) $dataset['semester_aktif'], FILTER_VALIDATE_BOOLEAN)) {
@@ -80,6 +80,7 @@ class Configuration extends CI_Controller {
         return [
             'tahun_akademik' => $this->input->post('tahun_akademik', true),
             'semester' => $this->input->post('semester', true),
+            'tempat' => $this->input->post('tempat', true),
             'semester_aktif' => $this->input->post('semester_aktif', true)
         ];
     }
@@ -92,6 +93,7 @@ class Configuration extends CI_Controller {
         $val = $this->form_validation;
         $val->set_rules('tahun_akademik', 'Tahun Akademik', 'trim|required|min_length[9]|max_length[9]|callback_format_check');
         $val->set_rules('semester', 'Semester', 'trim|required');
+        $val->set_rules('tempat', 'Tempat', 'trim|required');
         $val->set_rules('semester_aktif', 'Semester Aktif', 'trim|required|in_list[1,0]');
         // $val->set_error_delimiters('<div>&sdot; ', '</div>');
         return $val->run();

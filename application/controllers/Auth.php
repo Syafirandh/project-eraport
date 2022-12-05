@@ -41,8 +41,12 @@ class Auth extends CI_Controller {
 						redirect('siswa');
 					}elseif(__session('access')=='siswa'){
 						redirect('siswa/biodata');
-					}else{
+					}elseif(__session('access')=='orang_tua'){
 						redirect('dashboard');
+					}elseif(__session('access')=='super_user'){
+						redirect('dashboard');
+					}else{
+						redirect('auth');
 					}
 				}else{
 					$this->session->set_flashdata('msg', '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><i class="fa fa-ban"></i> Password anda salah.</div>');

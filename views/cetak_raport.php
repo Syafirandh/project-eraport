@@ -268,9 +268,9 @@ error_reporting(0);
             </tr>
             <td><br><br></td>
         </table>
-        <table>
+        <table>f
             <tr>
-                <td class="text-center" width="500"><img class="text-center" alt="Foto 3X4" style="border:1px dashed;width:114px;height:152px;" id="viewfoto"><?= _student()->foto; ?></td>
+                <td class="text-center" width="500"><img class="text-center" src="<?= base_url('uploads/'); ?><?= ( _student()->foto != '') ? _student()->foto : 'default.jpg'; ?>" alt="Foto 3X4" style="border:1px dashed;width:114px;height:152px;" id="viewfoto"></td>
                 <td></td>
                 <td style="text-align:left;margin-right:125px;" width="500">
                     <p><?= $raport_data['tempat']; ?>,
@@ -331,8 +331,8 @@ error_reporting(0);
                     <th style="text-align:center;">No</th>
                     <th rowspan="2" style="text-align:center;">Mata Pelajaran</th>
                     <th rowspan="1" style="text-align:center;">Nilai</th>
-                    <th rowspan="1" style="text-align:center;">Deskripsi 1</th>
-                    <th rowspan="4" style="text-align:center;">Deskripsi 2</th>
+                    <th rowspan="1" style="text-align:center;">Catatan 1</th>
+                    <th rowspan="4" style="text-align:center;">Catatan 2</th>
                 </tr>
             </thead>
             <tbody>
@@ -437,8 +437,8 @@ error_reporting(0);
                     <th style="text-align:center;">No</th>
                     <th rowspan="2" style="text-align:center;">Mata Pelajaran</th>
                     <th rowspan="1" style="text-align:center;">Nilai</th>
-                    <th rowspan="1" style="text-align:center;">Deskripsi 1</th>
-                    <th rowspan="4" style="text-align:center;">Deskripsi 2</th>
+                    <th rowspan="1" style="text-align:center;">Predikat</th>
+                    <th rowspan="4" style="text-align:center;">Catatan</th>
                 </tr>
             </thead>
             <tbody>

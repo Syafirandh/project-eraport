@@ -9,6 +9,7 @@ class Siswa extends CI_Controller {
         parent::__construct();
         is_logged_in();
         $this->load->model('siswa_m');
+        $this->load->model('configuration_m');
         $this->pk = siswa_m::$pk;
         $this->table = siswa_m::$table;
     }
@@ -17,6 +18,7 @@ class Siswa extends CI_Controller {
     {
         $data['master'] = $data['siswa'] = true;
         $data['siswa'] = $this->siswa_m->getData();
+        $data['tahunAkademik'] = $this->configuration_m->getData();
         $data['content'] = 'master/siswa';
         $this->load->view('index',$data);
     }
@@ -99,28 +101,29 @@ class Siswa extends CI_Controller {
     */
     private function dataset() {
         return [
-            'nis' => $this->input->post('nis', true),
-            'nisn' => $this->input->post('nisn', true),
-            'nik' => $this->input->post('nik', true),
-            'nama' => $this->input->post('nama', true),
-            'tmp_lhr' => $this->input->post('tmp_lhr', true),
-            'tgl_lhr' => $this->input->post('tgl_lhr', true),
-            'jk' => $this->input->post('jk', true),
-            'hobi' => $this->input->post('hobi', true),
-            'citacita' => $this->input->post('citacita', true),
-            'sts_anak' => $this->input->post('sts_anak', true),
-            'jml_sdr' => $this->input->post('jml_sdr', true),
-            'anak_ke' => $this->input->post('anak_ke', true),
-            'alamat' => $this->input->post('alamat', true),
-            'nik_ayah' => $this->input->post('nik_ayah', true),
-            'nama_ayah' => $this->input->post('nama_ayah', true),
-            'pend_ayah' => $this->input->post('pend_ayah', true),
-            'pekr_ayah' => $this->input->post('pekr_ayah', true),
-            'nik_ibu' => $this->input->post('nik_ibu', true),
-            'nama_ibu' => $this->input->post('nama_ibu', true),
-            'pend_ibu' => $this->input->post('pend_ibu', true),
-            'pekr_ibu' => $this->input->post('pekr_ibu', true),
-            'alamat_ortu' => $this->input->post('alamat_ortu', true),
+            'nis'               => $this->input->post('nis', true),
+            'nisn'              => $this->input->post('nisn', true),
+            'nik'               => $this->input->post('nik', true),
+            'nama'              => $this->input->post('nama', true),
+            'tmp_lhr'           => $this->input->post('tmp_lhr', true),
+            'tgl_lhr'           => $this->input->post('tgl_lhr', true),
+            'jk'                => $this->input->post('jk', true),
+            'hobi'              => $this->input->post('hobi', true),
+            'citacita'          => $this->input->post('citacita', true),
+            'sts_anak'          => $this->input->post('sts_anak', true),
+            'jml_sdr'           => $this->input->post('jml_sdr', true),
+            'anak_ke'           => $this->input->post('anak_ke', true),
+            'alamat'            => $this->input->post('alamat', true),
+            'nik_ayah'          => $this->input->post('nik_ayah', true),
+            'nama_ayah'         => $this->input->post('nama_ayah', true),
+            'pend_ayah'         => $this->input->post('pend_ayah', true),
+            'pekr_ayah'         => $this->input->post('pekr_ayah', true),
+            'nik_ibu'           => $this->input->post('nik_ibu', true),
+            'nama_ibu'          => $this->input->post('nama_ibu', true),
+            'pend_ibu'          => $this->input->post('pend_ibu', true),
+            'pekr_ibu'          => $this->input->post('pekr_ibu', true),
+            'alamat_ortu'       => $this->input->post('alamat_ortu', true),
+            'tahun_akademik'    => $this->input->post('tahun_akademik', true),
         ];
     }
     /**
@@ -176,7 +179,7 @@ class Siswa extends CI_Controller {
     */
     public function delete($id)
     {
-        $delete = $this->db->delete($this->table,[$this->pk=>$id])?'success':'error';
+        $delete = $this->db->delete($this->table,[$this->pk=>$id])? 'success': 'error';
         $delete == 'success' ? $this->toastr->success('Hapus data berhasil') : $this->toastr->error('Hapus data gagal');
         redirect('master/siswa');
     }

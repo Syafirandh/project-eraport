@@ -96,7 +96,7 @@ function hapus(x) {
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Guru<span class="text-red">*</span></label>
+                                <label>Nama Wali Kelas<span class="text-red">*</span></label>
                                 <select class="form-control select2" style="width: 100%;" name="idguru" required>
                                     <?php foreach(list_guru() as $row):?>
                                     <option value="<?=$row->idguru;?>"><?=$row->nip.' - '.$row->nama;?></option>

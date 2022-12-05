@@ -9,6 +9,7 @@ class Kelas extends CI_Controller {
         parent::__construct();
         is_logged_in();
         $this->load->model('kelas_m');
+        $this->load->model('configuration_m');
         $this->pk = kelas_m::$pk;
         $this->table = kelas_m::$table;
     }
@@ -16,8 +17,8 @@ class Kelas extends CI_Controller {
     public function index()
     {
         $data['master'] = $data['kelas'] = true;
+        $data['tahunAkademik'] = $this->configuration_m->getData();
         $data['kelas'] = $this->kelas_m->getData();
-        $data['graph'] = $this->kelas_m->graph();
         $data['content'] = 'master/kelas';
         $this->load->view('index',$data);
     }
@@ -30,14 +31,14 @@ class Kelas extends CI_Controller {
         $dataset = $this->dataset();
         if (_isNaturalNumber( $id )) {
             $this->vars['status'] = $this->db->update($this->table, $dataset,[$this->pk=>$id]) ? 'success' : 'error';
-            $this->vars['status'] == 'success' ? $this->toastr->success('Perubahan berhasil') : $this->toastr->error('Perubahan gagal');
+            $this->vars['status'] == 'success' ? $this->session->set_flashdata('success', 'Data Berhasil Diupdate !') : $this->session->set_flashdata('error', 'Data Gagal Diupdate !');
         } else {
             $cek = $this->db->get_where($this->table,['kelas_kd'=>$dataset['kelas_kd']]);
             if($cek->num_rows()==0){
                 $this->vars['status'] = $this->db->insert($this->table, $dataset) ? 'success' : 'error';
-                $this->vars['status'] == 'success' ? $this->toastr->success('Tambah baru berhasil') : $this->toastr->error('Tambah baru gagal');
+                $this->vars['status'] == 'success' ? $this->session->set_flashdata('success', 'Data Berhasil Ditambahkan !') : $this->session->set_flashdata('error', 'Data Gagal Ditambahkan !');
             }else{
-                $this->toastr->error('Kode kelas sudah ada');
+                $this->session->set_flashdata('error', 'Kode Kelas Sudah Ada !');
             }
         }
         redirect('master/kelas');
@@ -48,8 +49,9 @@ class Kelas extends CI_Controller {
     */
     private function dataset() {
         return [
-            'kelas_kd' => $this->input->post('kelas_kd', true),
-            'kelas_nama' => $this->input->post('kelas_nama', true)
+            'kelas_kd'       => $this->input->post('kelas_kd', true),
+            'kelas_nama'     => $this->input->post('kelas_nama', true),
+            'tahun_akademik' => $this->input->post('tahun_akademik', true)
         ];
     }
     /**

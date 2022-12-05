@@ -16,7 +16,7 @@ class Siswa_m extends CI_Model {
     
     public function getData()
     {
-        return $this->db->get(self::$table)->result();
+        return $this->db->from(self::$table)->order_by('tahun_akademik','DESC')->get()->result();
     }
     public function getById($id)
     {
