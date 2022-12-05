@@ -34,7 +34,7 @@ class Mengajar extends CI_Controller {
             // 'idmapel' => $this->input->post(array('idmapel','idmapel1','idmapel2','idmapel3'),true),
         ];
         $cek = $this->mengajar_m->check($data)->num_rows();
-        // return var_dump($cek);
+        
         if($cek==0){
             $data['idguru'] = $this->input->post('idguru', true);
             $this->vars['status'] = $this->db->insert($this->table, $data) ? 'success' : 'error';

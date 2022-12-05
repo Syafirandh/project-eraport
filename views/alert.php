@@ -1,5 +1,5 @@
-<script src="<?= base_url('assets/plugins/toastr/'); ?>toastr.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/plugins/toastr/'); ?>toastr.min.css">
+<!-- <script src="<?= base_url('assets/plugins/toastr/'); ?>toastr.min.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="<?= base_url('assets/plugins/toastr/'); ?>toastr.min.css"> -->
 
 
 <script type="text/javascript">

@@ -17,7 +17,7 @@ if ( ! function_exists('__session')) {
 if ( ! function_exists('_active_years')) {
 	function _active_years() {
 		$CI = &get_instance();
-		return $CI->db->get_where('tahun_akademik',['semester_aktif'=>1])->row();
+		return $CI->db->get_where('tahun_akademik',['semester_aktif' => 1])->row();
 	}
 }
 /**
@@ -71,7 +71,7 @@ if (!function_exists('list_mapel_by_guru')){
 		$idguru = $guru->idguru;
 		return $CI->db->join('kelas k', 'k.idkelas = n.idkelas', 'left')
 		->join('mapel m', 'm.idmapel = n.idmapel', 'left')
-		->where(['n.idtahun_akademik'=>$tahun_akademik,'n.semester'=>$semester,'n.idguru'=>$idguru])
+		->where([['n.idtahun_akademik'=>$tahun_akademik],['n.semester'=>$semester,'n.idguru'=>$idguru]])
 		->get('mengajar n')->result();
         
 	}

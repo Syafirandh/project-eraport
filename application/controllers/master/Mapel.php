@@ -9,6 +9,7 @@ class Mapel extends CI_Controller {
         parent::__construct();
         is_logged_in();
         $this->load->model('mapel_m');
+        $this->load->model('Mengajar_m');
         $this->load->model('configuration_m');
         $this->pk = mapel_m::$pk;
         $this->table = mapel_m::$table;
@@ -19,6 +20,7 @@ class Mapel extends CI_Controller {
         $data['master'] = $data['mapel'] = true;
         $data['tahunAkademik'] = $this->configuration_m->getData();
         $data['mapel'] = $this->mapel_m->getData();
+        // $data['mapel'] = $this->Mengajar_m->getDataByMapel(_active_years()->idtahun_akademik,_active_years()->semester);
         $data['content'] = 'master/mapel';
         $this->load->view('index',$data);
     }

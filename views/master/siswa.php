@@ -8,6 +8,7 @@
             $('[name="tmp_lhr"]').val("");
             $('[name="tgl_lhr"]').val("");
             $('[name="jk"]').val("").trigger('change');
+            $('[name="tahun_akademik"]').val(data.tahun_akademik).trigger('change');
             $('[name="alamat"]').val("");
             $('[name="nik"]').val("");
             $('[name="hobi"]').val("");
@@ -48,6 +49,7 @@
                     $('[name="tmp_lhr"]').val(data.tmp_lhr);
                     $('[name="tgl_lhr"]').val(data.tgl_lhr);
                     $('[name="jk"]').val(data.jk).trigger('change');
+                    $('[name="tahun_akademik"]').val(data.tahun_akademik).trigger('change');
                     $('[name="alamat"]').val(data.alamat);
                     $('[name="nik"]').val(data.nik);
                     $('[name="hobi"]').val(data.hobi);
@@ -87,6 +89,7 @@
                 $('[name="tmp_lhr"]').val(data.tmp_lhr);
                 $('[name="tgl_lhr"]').val(data.tgl_lhr);
                 $('[name="jk"]').val(data.jk).trigger('change');
+                $('[name="tahun_akademik"]').val(data.tahun_akademik).trigger('change');
                 $('[name="alamat"]').val(data.alamat);
                 $('[name="nik"]').val(data.nik);
                 $('[name="hobi"]').val(data.hobi);
@@ -169,6 +172,7 @@
         })
     }
 </script>
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
@@ -203,6 +207,7 @@
                         <th>TTL</th>
                         <th>JK</th>
                         <th>ALAMAT</th>
+                        <th>TAHUN AKADEMIK</th>
                         <th>STATUS</th>
                         <th width="65">AKSI</th>
                     </tr>
@@ -224,6 +229,7 @@
                             <td><?= $row->tmp_lhr . ', ' . date('d M Y', strtotime($row->tgl_lhr)); ?></td>
                             <td><?= $row->jk == 'L' ? 'Laki-Laki' : 'Perempuan'; ?></td>
                             <td><?= $row->alamat; ?></td>
+                            <td><?= getTahunPelajaran($row->tahun_akademik)->tahun_akademik; ?></td>
                             <td><a href="#" class="label <?php if ($row->status == 'Aktif') {
                                                                 echo 'bg-green';
                                                             } elseif ($row->status == 'Nonaktif') {
@@ -317,14 +323,26 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label>Alamat Lengkap<span class="text-red">*</span></label>
                                             <textarea class="form-control" name="alamat" rows="5" required></textarea>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="tahun_akademik">Tahun Pelajaran<span class="text-red">*</span></label>
+                                            <select class="form-control select2" style="width: 100%;" id="tahun_akademik" name="tahun_akademik" required>
+                                                <option value="" selected disabled>-- Pilih Tahun --</option>
+                                                <?php foreach($tahunAkademik as $tahun) :?>
+                                                    <option value="<?= $tahun->idtahun_akademik ?>"><?= $tahun->tahun_akademik ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>                                    
                                 </div>
                             </div>
+
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2">
                                 <div class="row">
@@ -376,6 +394,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
                                 <div class="row">

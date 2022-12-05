@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>E-rapot | Sistem Penilaian Siswa Smk Bumi Siliwangi</title>
+    <title>E-Rapot | Sistem Penilaian Siswa Smk Bumi Siliwangi</title>
     <link rel="icon" href="<?= base_url('uploads/logo_SMK.jpg')?>" type="image/x-icon">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -128,7 +128,7 @@
                         <i class="fa fa-times"></i></button>
                 </div>
                 <h3>
-                    Selamat Datang di E-Rapot <b><?= _school_profile()->nama; ?></b>
+                    Selamat Datang di E-Raport <b><?= _school_profile()->nama; ?></b>
                 </h3>
             </div>
         </div>
@@ -228,7 +228,7 @@
 
         <hr>
         <footer>
-            <strong>Copyright &copy; <?= date('Y'); ?> <a href="<?= _school_profile()->website; ?>">E-Academic</a>.</strong>
+            <strong>Copyright &copy; <?= date('Y'); ?> <a href="<?= _school_profile()->website; ?>">E-Rapot</a>.</strong>
             All rights reserved.
         </footer>
     </section>

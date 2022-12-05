@@ -48,6 +48,7 @@ class Configuration extends CI_Controller {
         if ($this->validation()) {
             $dataset = $this->dataset();
             if (_isNaturalNumber( $id )) {
+                $dataset['tanggal'] = date('Y-m-d');
                 $this->vars['status'] = $this->db->update($this->table, $dataset,[$this->pk=>$id]) ? 'success' : 'error';
                 $this->vars['status'] == 'success' ? $this->toastr->success('Perubahan berhasil') : $this->toastr->error('Perubahan gagal');
                 if ($this->vars['status'] == 'success' && filter_var((string) $dataset['semester_aktif'], FILTER_VALIDATE_BOOLEAN)) {

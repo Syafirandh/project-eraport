@@ -29,6 +29,7 @@
 
     <!-- JAVASCRIPT CDN  -->
     <!-- jQuery 3 -->
+    <script src="<?=base_url('assets/');?>jquery-3.6.1.min.js"></script>
     <script src="<?=base_url('assets/');?>bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="<?=base_url('assets/');?>bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -185,6 +186,9 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
+                            <li <?=isset($rekapTahunAkademik)?'class="active"':'';?>><a href="<?=site_url('master/rekapTahunAkademik');?>"><i
+                                        class="fa fa-angle-double-right"></i>
+                                    Rekap Tahun Akademik</a></li>
                             <li <?=isset($guru)?'class="active"':'';?>><a href="<?=site_url('master/guru');?>"><i
                                         class="fa fa-angle-double-right"></i>
                                     Guru</a></li>
@@ -219,6 +223,9 @@
                             <li <?=isset($wali_kelas)?'class="active"':'';?>><a
                                     href="<?=base_url('setting/wali_kelas');?>"><i class="fa fa-angle-double-right"></i>
                                     Wali Kelas</a></li>
+                            <li <?=isset($sett_kelas)?'class="active"':'';?>><a
+                                    href="<?=base_url('setting/set_kelas');?>"><i class="fa fa-angle-double-right"></i>
+                                    Rombongan Belajar</a></li>
                             
                         </ul>
                     </li>
@@ -268,6 +275,7 @@
                         <a href="<?=base_url('siswa/biodata');?>">
                             <i class="fa fa-edit"></i> <span>Biodata</span>
                         </a>
+                    <
                     </li>
                     <li <?=isset($report_siswa)?'class="active"':'';?>>
                         <a href="<?=base_url('raport/siswa');?>">
