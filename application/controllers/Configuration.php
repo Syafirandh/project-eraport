@@ -21,7 +21,6 @@ class Configuration extends CI_Controller {
         $data['content'] = 'config/academic_year';
         $this->load->view('index',$data);
     }
-    
     public function date_print()
     {
         $data['configuration'] = $data['date_print'] = true;

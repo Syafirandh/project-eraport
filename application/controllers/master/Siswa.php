@@ -179,7 +179,7 @@ class Siswa extends CI_Controller {
     */
     public function delete($id)
     {
-        $delete = $this->db->delete($this->table,[$this->pk=>$id])?'success':'error';
+        $delete = $this->db->delete($this->table,[$this->pk=>$id])? 'success': 'error';
         $delete == 'success' ? $this->toastr->success('Hapus data berhasil') : $this->toastr->error('Hapus data gagal');
         redirect('master/siswa');
     }

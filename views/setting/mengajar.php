@@ -3,9 +3,6 @@ function add() {
     $('[name="idguru"]').val("").trigger('change');
     $('[name="idkelas"]').val("").trigger('change');
     $('[name="idmapel"]').val("").trigger('change');
-    $('[name="idmapel"]').val("").trigger('change');
-    $('[name="idmapel"]').val("").trigger('change');
-    $('[name="idmapel"]').val("").trigger('change');
 }
 
 function copy() {
@@ -115,27 +112,6 @@ function hapus(x) {
                             <div class="form-group">
                                 <label>Mata Pelajaran<span class="text-red">*</span></label>
                                 <select class="form-control select2" style="width: 100%;" name="idmapel" required>
-                                    <?php foreach(list_mapel() as $row):?>
-                                    <option value="<?=$row->idmapel;?>"><?=$row->mapel_kd.' - '.$row->mapel_nama;?>
-                                    </option>
-                                    <?php endforeach;?>
-                                </select>
-                                <label>Mata Pelajaran<span class="text-red">*</span></label>
-                                <select class="form-control select2" style="width: 100%;" name="idmapel" >
-                                    <?php foreach(list_mapel() as $row):?>
-                                    <option value="<?=$row->idmapel;?>"><?=$row->mapel_kd.' - '.$row->mapel_nama;?>
-                                    </option>
-                                    <?php endforeach;?>
-                                </select>
-                                <label>Mata Pelajaran<span class="text-red">*</span></label>
-                                <select class="form-control select2" style="width: 100%;" name="idmapel" >
-                                    <?php foreach(list_mapel() as $row):?>
-                                    <option value="<?=$row->idmapel;?>"><?=$row->mapel_kd.' - '.$row->mapel_nama;?>
-                                    </option>
-                                    <?php endforeach;?>
-                                </select>
-                                <label>Mata Pelajaran<span class="text-red">*</span></label>
-                                <select class="form-control select2" style="width: 100%;" name="idmapel" >
                                     <?php foreach(list_mapel() as $row):?>
                                     <option value="<?=$row->idmapel;?>"><?=$row->mapel_kd.' - '.$row->mapel_nama;?>
                                     </option>

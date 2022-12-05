@@ -25,14 +25,14 @@
                                         <label for="nis">NIS<span class="text-red">*</span></label>
                                         <input type="hidden" name="idsiswa" value="<?=$row->idsiswa;?>">
                                         <input type="text" class="form-control" id="nis" name="nis"
-                                            placeholder="Ex: 2020" value="<?=$row->nis;?>" required readonly>
+                                            placeholder="Ex: 2023" value="<?=$row->nis;?>" required readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="nisn">NISN<span class="text-red">*</span></label>
                                         <input type="text" class="form-control" id="nisn" name="nisn"
-                                            placeholder="Ex: 0012389567" value="<?=$row->nisn;?>" maxlength="10"
+                                            placeholder="Ex: 07353782" value="<?=$row->nisn;?>" maxlength="10"
                                             required readonly>
                                     </div>
                                 </div>
@@ -40,14 +40,14 @@
                                     <div class="form-group">
                                         <label for="nama_lengkap">Nama Lengkap<span class="text-red">*</span></label>
                                         <input type="text" class="form-control" id="nama_lengkap" name="nama"
-                                            placeholder="Ex: John Andy" value="<?=$row->nama;?>" required>
+                                            placeholder="Ex: Baidowie" value="<?=$row->nama;?>" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="tempat_lahir">Tempat Lahir<span class="text-red">*</span></label>
                                         <input type="text" class="form-control" id="tempat_lahir" name="tmp_lhr"
-                                            placeholder="Ex: Manokwari" value="<?=$row->tmp_lhr;?>" required>
+                                            placeholder="Ex: Bandung" value="<?=$row->tmp_lhr;?>" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -95,21 +95,21 @@
                                     <div class="form-group">
                                         <label for="agama">Agama</label>
                                         <input type="text" class="form-control" id="agama" name="agama"
-                                            placeholder="Ex: Islam" value="<?=$row->agama;?>">
+                                            placeholder="Ex: Islam" value="<?=$row->agama;?>"> 
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="hobi">Hobi</label>
                                         <input type="text" class="form-control" id="hobi" name="hobi"
-                                            placeholder="Ex: Bulu tangkis" value="<?=$row->hobi;?>">
+                                            placeholder="Ex: Menyanyi" value="<?=$row->hobi;?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="citacita">Cita-Cita</label>
                                         <input type="text" class="form-control" id="citacita" name="citacita"
-                                            placeholder="Ex: Polisi" value="<?=$row->citacita;?>">
+                                            placeholder="Ex: TNI" value="<?=$row->citacita;?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -137,7 +137,7 @@
                                     <div class="form-group">
                                         <label for="anak_ke">Anak Ke Berapa</label>
                                         <input type="text" class="form-control" id="anak_ke" name="anak_ke"
-                                            placeholder="Ex: 2" value="<?=$row->anak_ke;?>">
+                                            placeholder="Ex: 1" value="<?=$row->anak_ke;?>">
                                     </div>
                                 </div>
                             </div>
@@ -149,28 +149,28 @@
                                     <div class="form-group">
                                         <label for="nik_ayah">NIK Ayah</label>
                                         <input type="text" class="form-control" id="nik_ayah" name="nik_ayah"
-                                            placeholder="Ex: 9206111027990001" value="<?=$row->nik_ayah;?>">
+                                            placeholder="Ex: 728983738293" value="<?=$row->nik_ayah;?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="nik_ibu">NIK Ibu</label>
                                         <input type="text" class="form-control" id="nik_ibu" name="nik_ibu"
-                                            placeholder="Ex: 9206111027990001" value="<?=$row->nik_ibu;?>">
+                                            placeholder="Ex: 728983738293" value="<?=$row->nik_ibu;?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="nama_ayah">Nama Ayah</label>
                                         <input type="text" class="form-control" id="nama_ayah" name="nama_ayah"
-                                            placeholder="Ex: Father John" value="<?=$row->nama_ayah;?>">
+                                            placeholder="Ex: Father Abdullah" value="<?=$row->nama_ayah;?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="nama_ibu">Nama Ibu</label>
                                         <input type="text" class="form-control" id="nama_ibu" name="nama_ibu"
-                                            placeholder="Ex: Mother John" value="<?=$row->nama_ibu;?>">
+                                            placeholder="Ex: Mother Aisah" value="<?=$row->nama_ibu;?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -230,14 +230,14 @@
                                     <div class="form-group">
                                         <label for="pekr_ayah">Pekerjaan Ayah</label>
                                         <input type="text" class="form-control" id="pekr_ayah" name="pekr_ayah"
-                                            placeholder="Ex: Polisi" value="<?=$row->pekr_ayah;?>">
+                                            placeholder="Ex: Petani" value="<?=$row->pekr_ayah;?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="pekr_ibu">Pekerjaan Ibu</label>
                                         <input type="text" class="form-control" id="pekr_ibu" name="pekr_ibu"
-                                            placeholder="Ex: PNS" value="<?=$row->pekr_ibu;?>">
+                                            placeholder="Ex: Ibu Rumah Tangga" value="<?=$row->pekr_ibu;?>">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -251,14 +251,14 @@
                                     <div class="form-group">
                                         <label for="nama_wali">Nama Wali</label>
                                         <input type="text" class="form-control" id="nama_wali" name="nama_wali"
-                                            placeholder="Ex: Jaki" value="<?=$row->nama_wali;?>">
+                                            placeholder="Ex: Agung" value="<?=$row->nama_wali;?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="pekr_wali">Pekerjaan Wali</label>
                                         <input type="text" class="form-control" id="pkr_wali" name="pkr_wali"
-                                            placeholder="Ex: PNS" value="<?=$row->pkr_wali;?>">
+                                            placeholder="Ex: Wirausaha" value="<?=$row->pkr_wali;?>">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
